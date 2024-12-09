@@ -10,9 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2       
-    - uses: actions/setup-node@master
+    - name: Set Node.js 22.12.0
+      uses: actions/setup-node@v1
       with:
-        node-version: 14
+        node-version: 22.12.0
     - name: install dependencies
       run: npm install
     - name: publish
@@ -24,9 +25,10 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-node@master
+    - name: Set Node.js 22.12.0
+      uses: actions/setup-node@v1
       with:
-        node-version: 14
+        node-version: 22.12.0
     - name: install dependencies
       run: npm install
     - name: publish
@@ -38,9 +40,10 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2       
-    - uses: actions/setup-node@master
+    - name: Set Node.js 22.12.0
+      uses: actions/setup-node@v1
       with:
-        node-version: 14
+        node-version: 22.12.0
     - name: install dependencies
       run: npm install
     - name: publish
