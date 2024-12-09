@@ -1,8 +1,8 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('node:path')
 
-const { updateElectron } = require('update-electron-app')
-updateElectron();
+const { updateElectronApp } = require('update-electron-app')
+updateElectronApp();
 
 const createWindow = () => {
     const win = new BrowserWindow({
