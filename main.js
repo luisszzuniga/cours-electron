@@ -1,12 +1,15 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('node:path')
-const log = require('electron-log');
 
-log.transports.file.resolvePathFn = () => __dirname + "/log.log";
+const log = require('electron-log');
+log.transports.file.resolvePathFn = () => {
+    return path.join(app.getPath('userData'), 'log.log');
+};
 
 const { updateElectronApp } = require('update-electron-app')
 updateElectronApp({
     logger: log,
+    updateInterval: "5 minutes",
 });
 
 const createWindow = () => {
