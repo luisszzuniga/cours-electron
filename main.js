@@ -1,14 +1,8 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('node:path')
 
-const { updateElectronApp, UpdateSourceType } = require('update-electron-app')
-updateElectronApp({
-    updateSource: {
-        type: UpdateSourceType.ElectronPublicUpdateService,
-        repo: 'luisszzuniga/cours-electron',
-        host: 'https://github.com'
-    }
-});
+const { updateElectronApp } = require('update-electron-app')
+updateElectronApp();
 
 const createWindow = () => {
     const win = new BrowserWindow({
