@@ -5,13 +5,83 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <title>Hello World!</title>
+
+    <style>
+      #forest {
+        display: grid;
+        /* grid-template-columns: repeat(100, 1px);
+        grid-template-rows: repeat(100, 1px); */
+      }
+
+      .square {
+        width: 1px;
+        height: 1px;
+        background-color: green;
+      }
+
+      .burning {
+        background-color: red;
+      }
+
+      .burned-hot {
+        background-color: orange;
+      }
+
+      .burned-cold {
+        background-color: black;
+      }
+
+      .filters {
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
   </head>
   <body>
-    <h1>Hello World! (test final)</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
-  </body>
-</html>
+    <main>
+      <h1>Simulateur feu de fôret</h1>
+      <canvas id="forest"></canvas>
 
-<!-- TODO: auto update -->
+      <div class="filters">
+        <input type="number" id="iterations-field">
+        
+        <div>
+          <h2>Vent</h2>
+
+          <select name="wind" id="wind-select" required>
+            <option value="None" selected>Vent nul</option>
+            <option value="Moderate">Vent faible</option>
+            <option value="Strong">Vent fort</option>
+            <option value="Violent">Vent violent</option>
+          </select>
+        </div>
+
+        <div>
+          <h2>Type de sol</h2>
+
+          <select name="ground" id="ground-select" required>
+            <option value="Humid" selected>Humide</option>
+            <option value="Normal">Normal</option>
+            <option value="Dry">Sec</option>
+            <option value="VeryDry">Très sec</option>
+          </select>
+        </div>
+
+        <div>
+          <h2>Végétation</h2>
+
+          <select name="vegetation" id="vegetation-select" required>
+            <option value="Continuous" selected>Continue</option>
+            <option value="Sparse">Peu espacée</option>
+            <option value="Scattered">Espacée</option>
+            <option value="Thin">Clairsemée</option>
+          </select>
+        </div>
+        
+        <button id="start-button">Itérer</button>
+      </div>
+    </main>
+  </body>
+
+  <script src="./renderer.js"></script>
+</html>

@@ -1,10 +1,11 @@
-window.addEventListener('DOMContentLoaded', () => {
-    const replaceText = (selector, text) => {
-        const element = document.getElementById(selector)
-        if (element) element.innerText = text
-    }
+const { contextBridge, ipcRenderer } = require('electron')
 
-    for (const dependency of ['chrome', 'node', 'electron']) {
-        replaceText(`${dependency}-version`, process.versions[dependency])
+contextBridge.exposeInMainWorld('electron', {
+    getDefaultIterations: () => ipcRenderer.invoke('getDefaultIterations'),
+    start: (data) => ipcRenderer.invoke('start', data),
+    onForestUpdated: (callback) => {
+        ipcRenderer.on('forest-updated', (event, data) => {
+            callback(data);
+        });
     }
-})
+});
