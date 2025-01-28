@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', async () => {
     const iterations = document.getElementById('iterations-field');
     const startButton = document.getElementById('start-button');

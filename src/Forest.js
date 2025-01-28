@@ -7,7 +7,7 @@ class Forest
 {
     static SquaresCount = 10000;
     static InitialFlammedSquares = 2;
-    static DefaultIterations = 500;
+    static DefaultIterations = 50;
 
     constructor(iterations, wind, ground, vegetation) {
         this.iterations = iterations;
@@ -58,6 +58,11 @@ class Forest
 
         this.currentIteration++;
 
+        this.iterateBurningSquares();
+        this.iterateBurnedHotSquares();
+    }
+
+    iterateBurningSquares() {
         // Parcourir toutes les cases burning pour vérifier si elles doivent passer à BurnedHot
         const burningSquares = this.squares.filter(square => square.isBurning());
         for (const square of burningSquares) {
@@ -71,7 +76,9 @@ class Forest
             // Si la case est toujours en Burning, on regarde si elle doit propager le feu
             this.propagateFire(square);
         }
+    }
 
+    iterateBurnedHotSquares() {
         // On parcourt toutes les cases au statut BurnedHot, c'est les seules qui déclenchent de la propagation de feu.
         const burnedHotSquares = this.squares.filter(square => square.isBurnedHot());
         for (const burnedHotSquare of burnedHotSquares) {

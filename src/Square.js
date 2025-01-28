@@ -25,11 +25,9 @@ class Square
     changeBurningStatus() {
         if (this.burnIterations > Square.BurnIterationsDuration) {
             this.setToBurnedHot();
-            return;
         }
 
         this.burnIterations++;
-        return;
     }
 
     changeBurnedHotStatus() {

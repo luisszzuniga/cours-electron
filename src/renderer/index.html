@@ -6,36 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <title>Hello World!</title>
 
-    <style>
-      #forest {
-        display: grid;
-        /* grid-template-columns: repeat(100, 1px);
-        grid-template-rows: repeat(100, 1px); */
-      }
-
-      .square {
-        width: 1px;
-        height: 1px;
-        background-color: green;
-      }
-
-      .burning {
-        background-color: red;
-      }
-
-      .burned-hot {
-        background-color: orange;
-      }
-
-      .burned-cold {
-        background-color: black;
-      }
-
-      .filters {
-        display: flex;
-        flex-direction: column;
-      }
-    </style>
+    <link rel="stylesheet" href="./app.css">
   </head>
   <body>
     <main>
@@ -44,9 +15,9 @@
 
       <div class="filters">
         <input type="number" id="iterations-field">
-        
+
         <div>
-          <h2>Vent</h2>
+          <h2 class="text-xl text-green-600">Vent</h2>
 
           <select name="wind" id="wind-select" required>
             <option value="None" selected>Vent nul</option>
@@ -77,8 +48,8 @@
             <option value="Thin">Clairsemée</option>
           </select>
         </div>
-        
-        <button id="start-button">Itérer</button>
+
+        <button class="btn" id="start-button">Itérer</button>
       </div>
     </main>
   </body>

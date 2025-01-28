@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('node:path')
-const { Forest } = require('./src/Forest');
+const { Forest } = require('../Forest');
 
 const log = require('electron-log');
 log.transports.file.resolvePathFn = () => {
@@ -17,11 +17,12 @@ const createWindow = () => {
     const win = new BrowserWindow({
         fullscreen: true,
         webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
+            preload: path.join(__dirname, '../preload/preload.js')
         }
     })
 
-    win.loadFile('index.html')
+
+    win.loadFile(path.join(__dirname, '../renderer/index.html'))
 
     return win;
 }
